@@ -1,85 +1,85 @@
 ---
-title: Application Settings
+title: Configurações da Aplicação
 status: live
 ---
 
-### mode
+### modo
 
-This is an identifier for the application's current mode of operation. The mode does not affect a Slim application's
-internal functionality. Instead, the mode is only for you to optionally invoke your own code for a given mode with the
-`configMode()` application method.
+Este é um identificador para a operação do modo atual da aplicação. O modo não afeta uma funcionalidade interna da 
+aplicação Slim. Em vez disso, o modo é apenas para você, opcionalmente, invocar seu próprio código para um dado modo
+com o método `configMode()`.
 
-The application mode is declared during instantiation, either as an environment variable or as an argument to the
-Slim application constructor. It cannot be changed afterward. The mode may be anything you want — "development",
-"test", and "production" are typical, but you are free to use anything you want (e.g. "foo").
+O modo da aplicação é declarado durante a instanciação, seja como uma variável de evento ou como um parâmetro para o
+construtor da aplicação Slim. Isso não pode ser mudado depois. O modo pode ser qualquer coisa que você queira - "development",
+"test", e "production" são típicos, mas você está livre para usar qualquer que você queira (ex: "foo").
 
     <?php
     $app = new \Slim\Slim(array(
         'mode' => 'development'
     ));
 
-Data Type
+Tipo de dados
 : string
 
-Default Value
+Valor padrão
 : "development"
 
 ### debug
 
 <div class="alert alert-info">
-    <strong>Heads Up!</strong> Slim converts errors into `ErrorException` instances.
+    <strong>Se liga!</strong> Slim converte erros em instâncias `ErrorException`.
 </div>
 
-If debugging is enabled, Slim will use its built-in error handler to display diagnostic information for uncaught
-Exceptions. If debugging is disabled, Slim will instead invoke your custom error handler, passing it the otherwise
-uncaught Exception as its first and only argument.
+Se o debugging está habilitado, Slim usará seu próprio manipulador de erros para mostrar uma informação de diagnóstico
+para exceções não capturadas. Se o debugging está desabilitado, Slim invocará seu manipulador de erros customizado,
+//passing it the otherwise uncaught Exception as its first and only argument.//
 
     <?php
     $app = new \Slim\Slim(array(
         'debug' => true
     ));
 
-Data Type
+Tipo de dados
 : boolean
 
-Default Value
+Valor padrão
 : true
 
 ### log.writer
 
-Use a custom log writer to direct logged messages to the appropriate output destination. By default, Slim's logger will
-write logged messages to `STDERR`. If you use a custom log writer, it must implement this interface:
+Use um escritor de log customizado para direcionar mensagens de log para apropriados destinos saídas. Por padrão, o log
+do Slim escreverá mensagens para `STDERR`. Se você usa um escritor de log customizado, isso deve implementar esta interface:
 
     public write(mixed $message, int $level);
 
-The `write()` method is responsible for sending the logged message (not necessarily a string) to the appropriate output
-destination (e.g. a text file, a database, or a remote web service).
+O método `write()` é responsável por enviar a mensagem de log (não necessáriamente uma string) para um apropriado destino
+de saída (ex: um arquivo de texto, um banco de dados, ou um serviço web remoto).
 
-To specify a custom log writer after instantiation you must access Slim's logger directly and use its `setWriter()` method:
+Para especificar um escritor de log customizado após a instanciação do Slim, você deve acessar o logger do Slim diretamente
+e usar o método `setWriter()`:
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'log.writer' => new \My\LogWriter()
     ));
-
     // After instantiation
     $log = $app->getLog();
     $log->setWriter(new \My\LogWriter());
 
-Data Type
+Tipo de dados
 : mixed
 
-Default Value
+Valor padrão
 : \Slim\LogWriter
 
 ### log.level
 
 <div class="alert alert-info">
-    <strong>Heads Up!</strong> Use the constants defined in `\Slim\Log` instead of integers.
+    <strong>Se liga!</strong> Use as constantes definidas em `\Slim\Log` em vez de inteiros.
 </div>
 
-Slim has five (5) log message levels:
+Slim tem 5 níveis de mensagens de log:
 
 * \Slim\Log::DEBUG
 * \Slim\Log::INFO
