@@ -1,8 +1,8 @@
 ---
-title: System Requirements
+title: Requisitos do Sistema
 status: live
 ---
 
 * PHP >= 5.3.0
 
-The `mcrypt` extension is required *only* if you use encrypted cookies.
+A extensão `mcrypt` é obrigatória *apenas* se você usa cookies criptografados.
