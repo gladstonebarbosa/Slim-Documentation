@@ -3,13 +3,13 @@ title: Installation
 status: live
 ---
 
-### Composer Install
+### Instalação pelo Composer
 
-Install composer in your project:
+Instale o composer em seu projeto:
 
     curl -s https://getcomposer.org/installer | php
 
-Create a `composer.json` file in your project root:
+Crie um arquivo `composer.json` na raiz do seu projeto:
 
     {
         "require": {
@@ -17,19 +17,19 @@ Create a `composer.json` file in your project root:
         }
     }
 
-Install via composer:
+Instale via composer:
 
     php composer.phar install
 
-Add this line to your application's `index.php` file:
+Adicione esta linha no arquivo `index.php` da sua aplicação:
 
     <?php
     require 'vendor/autoload.php';
 
-### Manual Install
+### Instalação manual
 
-Download and extract the Slim Framwork into your project directory and `require` it in your application's `index.php`
-file. You'll also need to register Slim's autoloader.
+Baixe e extraia o Slim Framework no diretório do seu projeto e use `require` no arquivo `index.php` da sua aplicação.
+Você também precisará registrar o autoloader do Slim.
 
     <?php
     require 'Slim/Slim.php';
