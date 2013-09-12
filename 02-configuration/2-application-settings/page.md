@@ -33,7 +33,7 @@ Valor padrão
 
 Se o debugging está habilitado, Slim usará seu próprio manipulador de erros para mostrar uma informação de diagnóstico
 para exceções não capturadas. Se o debugging está desabilitado, Slim invocará seu manipulador de erros customizado,
-passando para seu manipulador a exceção não capturada como seu primeiro e único parâmetro.
+passando como primeiro e único parâmetro do seu manipulador a exceção não capturada.
 
     <?php
     $app = new \Slim\Slim(array(
