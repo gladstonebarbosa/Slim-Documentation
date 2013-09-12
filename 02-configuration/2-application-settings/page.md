@@ -87,269 +87,256 @@ Slim tem 5 níveis de mensagens de log:
 * \Slim\Log::ERROR
 * \Slim\Log::FATAL
 
-The `log.level` application setting determines which logged messages will be honored and which will be ignored.
-For example, if the `log.level` setting is `\Slim\Log::INFO`, debug messages will be ignored while info, warn,
-error, and fatal messages will be logged.
+A configuração `log.level` determina quais mensagens de log serão honradas e quais serão ignoradas.
+Por exemplo, se a configuração `top.level` é `\Slim\Log::INFO`, mensagens de debug serão ignoradas enquanto
+info, warn, error e fatal messages serão honradas.
 
-To change this setting after instantiation you must access Slim's logger directly and use its `setLevel()` method.
+Para mudar esta configuração após instanciação, você deve acessar o logger do Slim diretamente usando o método `setLevel()`.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'log.level' => \Slim\Log::DEBUG
     ));
-
     // After instantiation
     $log = $app->getLog();
     $log->setLevel(\Slim\Log::WARN);
 
-Data Type
+Tipo de dados
 : integer
 
-Default Value
+Valor padrão
 : \Slim\Log::DEBUG
 
 ### log.enabled
 
-This enables or disables Slim's logger. To change this setting after instantiation you need to access Slim's logger
-directly and use its `setEnabled()` method.
+Este habilita ou desabilita o logger do Slim. Para mudar esta configuração após instanciação, você precisa acessar o logger
+do Slim diretamente e usar o método `setEnabled()`.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'log.enabled' => true
     ));
-
     // After instantiation
     $log = $app->getLog();
     $log->setEnabled(true);
 
-Data Type
+Tipo de dados
 : boolean
 
-Default Value
+Valor padrão
 : true
 
 ### templates.path
 
-The relative or absolute path to the filesystem directory that contains your Slim application's template files.
-This path is referenced by the Slim application's View to fetch and render templates.
+O caminho relativo ou absoluto para o diretório de sistema de arquivos que contém os arquivos de template da sua aplicação
+Slim. Este caminho é referenciado pela View do Slim para obter e renderizar templates.
 
-To change this setting after instantiation you need to access Slim's view directly and use its `setTemplatesDirectory()`
-method.
+Para mudar esta configuração após instanciação, você precisa acessar a view do Slim 
+diretamente e usar o método `setTemplatesDirectory()`
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'templates.path' => './templates'
     ));
-
     // After instantiation
     $view = $app->view();
     $view->setTemplatesDirectory('./templates');
 
-Data Type
+Tipo de dados
 : string
 
-Default Value
+Valor padrão
 : "./templates"
 
 ### view
 
-The View class or instance used by the Slim application. To change this setting after instantiation you need to
-use the Slim application's `view()` method.
+A classe View ou instância usada pela aplicação Slim. Para mudar esta configuração após instanciação, você precisa
+usar o método `view()` do Slim.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'view' => new \My\View()
     ));
-
     // After instantiation
     $app->view(new \My\View());
 
-Data Type
+Tipo de dados
 : string|\Slim\View
 
-Default Value
+Valor padrão
 : \Slim\View
 
 ### cookies.lifetime
 
-Determines the lifetime of HTTP cookies created by the Slim application. If this is an integer, it must be a valid
-UNIX timestamp at which the cookie expires. If this is a string, it is parsed by the `strtotime()` function to extrapolate
-a valid UNIX timestamp at which the cookie expires.
+Determina o tempo de vida dos cookies HTTP criados pela aplicação Slim. Se isso for um inteiro, deverá ter um
+UNIX timestamp válido para o cookie expirar. Se isso for uma string, será validada pela função `strtotime()` para extrapolar
+um UNIX timestamp válido para o cookie expirar.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.lifetime' => '20 minutes'
     ));
-
     // After instantiation
     $app->config('cookies.lifetime', '20 minutes');
 
-Data Type
+Tipo de dados
 : integer|string
 
-Default Value
+Valor padrão
 : "20 minutes"
 
 ### cookies.path
 
-Determines the default HTTP cookie path if none is specified when invoking the Slim application's `setCookie()` or
-`setEncryptedCookie()` methods.
+Determina o caminho padrão para os cookies HTTP se nada for especificado quando invocado os métodos `setCookie()`
+ou `setEncryptedCookie()` da aplicação Slim.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.path' => '/'
     ));
-
     // After instantiation
     $app->config('cookies.lifetime', '/');
 
-Data Type
+Tipo de dados
 : string
 
-Default Value
+Valor padrão
 : "/"
 
 ### cookies.domain
 
-Determines the default HTTP cookie domain if none specified when invoking the Slim application's `setCookie()` or
-`setEncryptedCookie()` methods.
+Determina o domínio padrão para os cookies HTTP se nada for especificado quando invocado os métodos `setCookie()` ou
+`setEncryptedCookie()` da aplicação Slim.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.domain' => 'domain.com'
     ));
-
     // After instantiation
     $app->config('cookies.domain', 'domain.com');
 
-Data Type
+Tipo de dados
 : string
 
-Default Value
+Valor padrão
 : null
 
 ### cookies.secure
 
-Determines whether or not cookies are delivered only via HTTPS. You may override this setting when invoking
-the Slim application's `setCookie()` or `setEncryptedCookie()` methods.
+Determina ou não, se cookies são entregues apenas por HTTPS. Você pode sobrescrever esta configuração quando invoca
+os métodos `setCookie()` ou `setEncryptedCookie()` da aplicação Slim.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.secure' => false
     ));
-
     // After instantiation
     $app->config('cookies.secure', false);
 
-Data Type
+Tipo de dados
 : boolean
 
-Default Value
+Valor padrão
 : false
 
 ### cookies.httponly
 
-Determines whether or not cookies are delivered only via the HTTP protocol. You may override this setting when invoking
-the Slim application's `setCookie()` or `setEncryptedCookie()` methods.
+Determina ou não, se cookies são entregues apenas pelo protocolo HTTP. Você pode sobrescrever esta configuração quando
+invoca os métodos `setCookie()` ou `setEncryptedCookie()` da aplicação Slim.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.httponly' => false
     ));
-
     // After instantiation
     $app->config('cookies.httponly', false);
 
-Data Type
+Tipo de dados
 : boolean
 
-Default Value
+Valor padrão
 : false
 
 ### cookies.secret_key
 
-The secret key used for cookie encryption. You should change this setting if you use encrypted HTTP cookies
-in your Slim application.
+A chave secreta usada para criptografia de cookie. Você deve (aconselhável) mudar esta configuração se você usa
+cookies HTTP criptografos em sua aplicação Slim.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.secret_key' => 'secret'
     ));
-
     // After instantiation
     $app->config('cookies.secret_key', 'secret');
 
-Data Type
+Tipo de dados
 : string
 
-Default Value
+Valor padrão
 : "CHANGE_ME"
 
 ### cookies.cipher
 
-The mcrypt cipher used for HTTP cookie encryption. See [available ciphers](http://php.net/manual/en/mcrypt.ciphers.php).
+O criptograma mcrypt usado para criptografia de cookie HTTP. Veja [criptograma disponíveis](http://php.net/manual/en/mcrypt.ciphers.php).
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.cipher' => MCRYPT_RIJNDAEL_256
     ));
-
     // After instantiation
     $app->config('cookies.cipher', MCRYPT_RIJNDAEL_256);
 
-Data Type
+Tipo de dados
 : integer
 
-Default Value
+Valor padrão
 : MCRYPT_RIJNDAEL_256
 
 ### cookies.cipher_mode
 
-The mcrypt cipher mode used for HTTP cookie encryption. See [available cipher modes](http://php.net/manual/en/mcrypt.ciphers.php).
+O modo do criptograma do mcrypt usado para criptografia de cookie HTTP. Veja [modos de criptograma disponíveis](http://php.net/manual/en/mcrypt.ciphers.php).
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'cookies.cipher_mode' => MCRYPT_MODE_CBC
     ));
-
     // After instantiation
     $app->config('cookies.cipher_mode', MCRYPT_MODE_CBC);
 
-Data Type
+Tipo de dados
 : integer
 
-Default Value
+Valor padrão
 : MCRYPT_MODE_CBC
 
 ### http.version
 
-By default, Slim returns an HTTP/1.1 response to the client. Use this setting if you need to return an HTTP/1.0
-response. This is useful if you use PHPFog or an nginx server configuration where you communicate with backend
-proxies rather than directly with the HTTP client.
+Por padrão, Slim retorna uma resposta HTTP/1.1 para o cliente. Use esta configuração se você precisa retornar 
+ma resposta TTP/1.0. Isto é útil se você use PHPFrog ou uma configuração de servidor nginx onde você se comunica
+com backend e proxies ao invés de cliente HTTP diretamente.
 
     <?php
     // During instantiation
     $app = new \Slim\Slim(array(
         'http.version' => '1.1'
     ));
-
     // After instantiation
     $app->config('http.version', '1.1');
 
-Data Type
+Tipo de dados
 : string
 
-Default Value
+Valor padrão
 : "1.1"
