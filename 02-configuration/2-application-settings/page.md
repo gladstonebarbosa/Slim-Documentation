@@ -10,8 +10,9 @@ aplicação Slim. Em vez disso, o modo é apenas para você opcionalmente, invoc
 com o método `configMode()`.
 
 O modo da aplicação é declarado durante a instanciação, seja como uma variável de evento ou como um parâmetro para o
-construtor da aplicação Slim. Isso não pode ser mudado depois. O modo pode ser qualquer coisa que você queira - "development",
-"test", e "production" são típicos, mas você está livre para usar qualquer que você queira (ex: "foo").
+construtor da aplicação Slim. Isso não pode ser mudado depois. O modo pode ser qualquer coisa que você queira, 
+os mais típicos são - "development", "test", e "production", mas você está livre para usar qualquer que você queira 
+(ex: "foo").
 
     <?php
     $app = new \Slim\Slim(array(
