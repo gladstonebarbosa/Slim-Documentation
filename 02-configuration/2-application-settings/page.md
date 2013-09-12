@@ -48,12 +48,12 @@ Valor padrão
 
 ### log.writer
 
-Use um escritor de log customizado para direcionar mensagens de log para apropriados destinos saídas. Por padrão, o log
-do Slim escreverá mensagens para `STDERR`. Se você usa um escritor de log customizado, isso deve implementar esta interface:
+Use um escritor de log customizado para direcionar mensagens de log para apropriados destinos de saída. Por padrão, o log
+do Slim escreverá mensagens para `STDERR`. Se você usa um escritor de log customizado, seu log deve implementar esta interface:
 
     public write(mixed $message, int $level);
 
-O método `write()` é responsável por enviar a mensagem de log (não necessáriamente uma string) para um apropriado destino
+O método `write()` é responsável por enviar a mensagem de log (não necessariamente uma string) para um apropriado destino
 de saída (ex: um arquivo de texto, um banco de dados, ou um serviço web remoto).
 
 Para especificar um escritor de log customizado após a instanciação do Slim, você deve acessar o logger do Slim diretamente
@@ -173,9 +173,9 @@ Valor padrão
 
 ### cookies.lifetime
 
-Determina o tempo de vida dos cookies HTTP criados pela aplicação Slim. Se isso for um inteiro, deverá ter um
-UNIX timestamp válido para o cookie expirar. Se isso for uma string, será validada pela função `strtotime()` para extrapolar
-um UNIX timestamp válido para o cookie expirar.
+Determina o tempo de vida dos cookies HTTP criados pela aplicação Slim. Se for um inteiro, deverá ter um
+UNIX timestamp válido para a expiração do cookie. Se isso for uma string, será validada pela função `strtotime()` para extrapolar
+um UNIX timestamp válido para a expiração do cookie.
 
     <?php
     // During instantiation
@@ -325,7 +325,7 @@ Valor padrão
 ### http.version
 
 Por padrão, Slim retorna uma resposta HTTP/1.1 para o cliente. Use esta configuração se você precisa retornar 
-ma resposta TTP/1.0. Isto é útil se você use PHPFrog ou uma configuração de servidor nginx onde você se comunica
+uma resposta HTTP/1.0. Isto é útil se você use PHPFrog ou uma configuração de servidor nginx onde você se comunica
 com backend e proxies ao invés de cliente HTTP diretamente.
 
     <?php
