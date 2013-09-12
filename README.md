@@ -1,21 +1,21 @@
-# Slim Framework Documentation
+# Documentação do Slim Framework
 
-## Overview
+## Resumo
 
-This repository contains the Slim Framework documentation *content*. It is structured
-according to the [Statamic CMS content format](http://statamic.com/learn/core-concepts/pages-and-entries).
+Este repositório contém o *conteúdo* da documentação do Slim Framework. Está estruturado 
+de acordo com a [Statamic CMS content format](http://statamic.com/learn/core-concepts/pages-and-entries).
 
-Changes to this repository **will not** be deployed on push. The repository owner must manually
-deploy changes when appropriate. Please open a new issue w/ pull request when your documentation changes
-are ready to be merged and deployed.
+Mudanças para este repositório **não serão** publicadas com *push*. O dono do repositório deve manualmente
+publicar mudanças quando apropriadas. Por favor abra uma nova *issue* com *pull request* quando as mudanças da sua
+documentação estiverem prontas para aplicar *merge* e *deploy*.
 
-## Owner
+## Dono
 
 [Josh Lockhart](http://www.joshlockhart.com)
 
-## License
+## Licença
 
-Copyright 2013, Josh Lockhart and contributors. All rights reserved.
+Copyright 2013, Josh Lockhart e contribuidores. Todos os direitos reservados.
 
-This license applies **only** to the written documentation. The [Slim Framework](http://slimframework.com/) is released
-under a MIT License.
+Esta licença se aplica **apenas** para a documentação escrita. O [Slim Framework](http://slimframework.com/) é liberado
+sob licença MIT.
