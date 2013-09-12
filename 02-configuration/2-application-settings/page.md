@@ -6,7 +6,7 @@ status: live
 ### modo
 
 Este é um identificador para a operação do modo atual da aplicação. O modo não afeta uma funcionalidade interna da 
-aplicação Slim. Em vez disso, o modo é apenas para você, opcionalmente, invocar seu próprio código para um dado modo
+aplicação Slim. Em vez disso, o modo é apenas para você opcionalmente, invocar seu próprio código para um modo dado
 com o método `configMode()`.
 
 O modo da aplicação é declarado durante a instanciação, seja como uma variável de evento ou como um parâmetro para o
