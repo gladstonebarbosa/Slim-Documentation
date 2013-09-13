@@ -1,5 +1,5 @@
 ---
-title: GET Routes
+title: Rotas GET
 status: live
 ---
 
