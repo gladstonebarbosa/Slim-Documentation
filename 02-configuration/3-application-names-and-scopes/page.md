@@ -1,29 +1,30 @@
 ---
-title: Application Names and Scopes
+title: Nomes e Escopos da Aplicação
 status: live
 ---
 
-When you build a Slim application you will enter various scopes in your code (e.g. global scope and function scope).
-You will likely need a reference to your Slim application in each scope. There are several ways to do this:
+Quando você construir uma aplicação Slim, você entrará vários escopos em seu código (ex: escopo global e escopo de função).
+Você provavelmente precisará de uma referência para sua aplicação Slim em cada escopo. Existem várias maneiras de fazer isso:
 
-* Use application names with the Slim application's `getInstance()` static method
-* Curry an application instance into function scope with the `use` keyword
+* Use nomes de aplicação com o método estatico `getInstance()` do Slim
+* Passe a instancia da aplicação para dentro do escopo da função com a palavra chave `use`
 
-### Application Names
+### Nomes da Aplicação
 
-Every Slim application may be given a name. **This is optional**. Names help you get a reference to a Slim
-application instance in any scope throughout your code. Here is how you set and get an application’s name:
+Toda aplicação do Slim pode receber um nome. **This is optional**. Nomes ajudam você a obter uma referência
+para a instacia da aplicação Slim em qualquer escopo em torno do seu código. Aqui é como você atribue e obtem um nome de aplicação:
 
     <?php
     $app = new \Slim\Slim();
     $app->setName('foo');
     $name = $app->getName(); // "foo"
 
-### Scope Resolution
+### Resolução de Escopo
 
-So how do you get a reference to your Slim application? The example below demonstrates how to obtain a reference
-to a Slim application within a route callback function. The `$app` variable is used in the global scope to define
-the HTTP GET route. But the `$app` variable is also needed within the route’s callback scope to render a template.
+Então, como você obtem uma referência para sua aplicação Slim? O exemplo abaixo, demonstra como obter uma referência
+para a aplicação Slim dentro de uma função de callback de uma rota. A variável `$app` é usada no escopo global para
+definir a rota HTTP GET. Mas a variável `$app` é também necessária dentro do escopo do callback da rota para renderizar
+um template.
 
     <?php
     $app = new \Slim\Slim();
@@ -31,11 +32,11 @@ the HTTP GET route. But the `$app` variable is also needed within the route’s 
         $app->render('foo.php'); // <-- ERROR
     });
 
-This example fails because the `$app` variable is unavailable inside the route callback function.
+Este exemplo falha porque a variável `$app` é indisponível dentro da função de callback da rota.
 
 #### Currying
 
-We can inject the `$app` variable into the callback function with the `use` keyword:
+Podemos injetar a variável `$app` dentro da função de callback com a palavra chave `use`:
 
     <?php
     $app = new \Slim\Slim();
@@ -43,9 +44,9 @@ We can inject the `$app` variable into the callback function with the `use` keyw
         $app->render('foo.php'); // <-- SUCCESS
     });
 
-#### Fetch by Name
+#### Capturar através de nome
 
-You can use the Slim application's `getInstance()` static method, too:
+Você pode usar também o método estatico `getInstance()` do Slim:
 
     <?php
     $app = new \Slim\Slim();
