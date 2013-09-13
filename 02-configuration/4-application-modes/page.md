@@ -1,62 +1,60 @@
 ---
-title: Application Modes
+title: Modos da Aplicação
 status: live
 ---
 
-It is common practice to run web applications in a specific mode depending on the current state of the project.
-If you are developing the application, you will run the application in “development” mode; if you are testing the
-application, you will run the application in “test” mode; if you launch the application, you will run the application
-in “production” mode.
+É uma pratica comum executar aplicações web em um especifico modo dependendo do estado atual do projeto.
+Se você está desenvolvendo a aplicação, você executará a aplicação no modo "development". Se você está testando
+a aplicação, você executará-la no modo "test"; se você lançar a aplicação, você executará-la no modo "production".
 
-Slim supports the concept of modes in that you may define your own modes and prompt Slim to prepare itself
-appropriately for the current mode. For example, you may want to enable debugging in “development” mode but not
-in “production” mode. The examples below demonstrate how to configure Slim differently for a given mode.
+Slim suporta o conceito de modos, nisso você pode definir seus próprios modos e incitar o Slim a se preparar
+apropriadamente para o modo atual. Por exemplo, você pode querer habilitar o debug no modo "development" mas não
+no modo "production". Os exemplos abaixo demonstram como configurar o Slim diferentemente para um dado modo.
 
-### What is a mode?
+### O que é modo?
 
-Technically, an application mode is merely a string of text - like “development” or “production” - that has an
-associated callback function used to prepare the Slim application appropriately. The application mode may be
-anything you like: “testing”, “production”, “development”, or even “foo”.
+Tecnicamente, um modo de aplicação é meramente uma string de texto - como "development" ou "production" - que tem
+uma função de callback associada, usada para preparar a aplicação Slim apropriadamente. O modo da aplicação pode ser
+qualquer coisa como: "testing", "production", "development", ou mesmo "foo".
 
-### How do I set the application mode?
+### Como eu atribuo um modo de aplicação?
 
 <div class="alert alert-info">
-    <strong>Heads Up!</strong> The application mode may only be set during application instantiation. It may
-    not be changed afterward.
+    <strong>Se liga!</strong> O modo da aplicação pode ser apenas atribuido durante a instanciação e não pode
+    ser mudado depois.
 </div>
 
-#### Use an environment variable
+#### Use uma variável de ambiente
 
-If Slim sees an environment variable named "SLIM_MODE", it will set the application mode to that variable’s value.
+Se o Slim ver uma variável de ambiente chamada "SLIM_MODE", ele atribuirá o modo da aplicação para o valor dessa variável.
 
     <?php
     $_ENV['SLIM_MODE'] = 'production';
 
-#### Use application setting
+#### Use configuração da aplicação
 
-If an environment variable is not found, Slim will next look for the mode in the application settings.
+Se uma variável de ambiente não é encontrada, Slim irá olhar para o modo na configuração da aplicação.
 
     <?php
     $app = new \Slim\Slim(array(
         'mode' => 'production'
     ));
 
-#### Default mode
+#### Modo padrão
 
-If the environment variable and application setting are not found, Slim will set the application mode to “development”.
+Se a variável de ambiente e configuração da aplicação não são encontradas, Slim atribuirá o modo da aplicação para "development".
 
-### Configure for a Specific Mode
+### Configurar para um modo especifico
 
-After you instantiate a Slim application, you may configure the Slim application for a specific mode
-with the Slim application's `configureMode()` method. This method accepts two arguments: the name of the target mode
- and a callable function to be immediately invoked if the first argument matches the current application mode.
+Após você instanciar a aplicação Slim, você pode configuarar o Slim para um modo especifico com o método `configureMode()`
+do Slim. Este método aceita dois parâmetros: o nome do modo desejável e uma função para ser imediatamente invocada
+se o primeiro parâmetro combinar com o modo atual da aplicação.
 
-Assume the current application mode is “production”. Only the callable associated with the “production” mode will
-be invoked. The callable associated with the “development” mode will be ignored until the application mode is
-changed to “development”.
+Presuma que o modo atual da aplicação é "production". Apenas a função associada com o modo "production" será invocada.
+A função associada com o modo "development" será ignorada até que o modo da aplicação seja mudado para "development".
 
     <?php
-    // Set the current mode
+    // Atribue o modo atual
     $app = new \Slim\Slim(array(
         'mode' => 'production'
     ));
@@ -69,7 +67,7 @@ changed to “development”.
         ));
     });
 
-    // Only invoked if mode is "development"
+    // Invocado apenas se o modo for "development"
     $app->configureMode('development', function () use ($app) {
         $app->config(array(
             'log.enable' => false,
