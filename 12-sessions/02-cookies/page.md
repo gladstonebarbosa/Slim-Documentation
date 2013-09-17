@@ -26,7 +26,7 @@ de cookie de sessão funcionará sem problemas com a superglobal `$_SESSION` ass
 de armazenamento de sessão com zero de mudanças para o código da sua aplicação.
 
 Se você usa o middleware de cookie de sessão, você NÃO precisa iniciar uma sessão nativa do PHP. A superglobal `$_SESSION`
-estará ainda disponível e será persistido em um cookie HTTP através da camada do middleware ao invés do gerencimento de sessão
+ainda estará disponível e será persistido em um cookie HTTP através da camada do middleware ao invés do gerencimento de sessão
 nativo do PHP.
 
 Lembre-se, cookies HTTP são limitados para apenas 4 KB de dados. Se os dados da sua sessão execeder 
