@@ -1,11 +1,11 @@
 ---
-title: Cookie Session Store
+title: Armazenamento de sessão de Cookie
 status: live
 ---
 
-You may also use the `\Slim\Middleware\SessionCookie` middleware to persist session data in encrypted, hashed
-HTTP cookies. To enable the session cookie middleware, add the `\Slim\Middleware\SessionCookie` middleware to your
-Slim application:
+Você pode também usar o middleware `\Slim\Middleware\SessionCookie` para persistir dados de sessão em cookies HTTP
+criptografados e hashed. Para habilitar o middleware de cookie de sessão, adicione o middleware `\Slim\Middleware\SessionCookie`
+para sua aplicação Slim:
 
     <?php
     $app = new Slim();
@@ -21,20 +21,21 @@ Slim application:
         'cipher_mode' => MCRYPT_MODE_CBC
     )));
 
-The second argument is optional; it is shown here so you can see the default middleware settings. The session cookie
-middleware will work seamlessly with the `$_SESSION` superglobal so you can easily migrate to this session storage
-middleware with zero changes to your application code.
+O segundo parâmetro é opcional; é mostrado aqui assim você pode ver as configurações padrões do middleware. O middleware de
+de cookie de sessão funcionará sem problemas com a superglobal `$_SESSION` assim você pode facilmente migrar para esse middleware
+de armazenamento de sessão com zero de mudanças para o código da sua aplicação.
 
-If you use the session cookie middleware, you DO NOT need to start a native PHP session. The `$_SESSION` superglobal
-will still be available, and it will be persisted into an HTTP cookie via the middleware layer rather than with
-PHP’s native session management.
+Se você usa o middleware de cookie de sessão, você NÃO precisa iniciar uma sessão nativa do PHP. A superglobal `$_SESSION`
+estará ainda disponível e será persistido em um cookie HTTP através da camada do middleware ao invés do gerencimento de sessão
+nativo do PHP.
 
-Remember, HTTP cookies are inherently limited to only 4 kilobytes of data. If your encrypted session data will exceed
-this length, you should instead rely on PHP’s native sessions or an alternate session store.
+Lembre-se, cookies HTTP são limitados para apenas 4 KB de dados. Se os dados da sua sessão execeder 
+esse tamanho, você deve depender então de sessões nativas do PHP ou um armazenamento de sessão alternativo.
 
 <div class="alert">
-    <strong>PLEASE NOTE:</strong> Client-side storage of session data is not recommended if you are
-    dealing with sensitive information, even when using Slim's encrpyted session cookie middleware.
-    If you need to store sensitive information, you should encrypt and store the session information
-    on your server.
+    <strong>AVISO:</strong> 
+    Armazenamento de dados de sessão no lado do cliente não é recomendado se você está
+    lhe dando com informações sigilosas, mesmo quando usando o middleware de cookie de sessão 
+    criptografado do Slim. Se você precisa armazenar informações sigilosas, você deve criptografar 
+    e armazenar a informação da sessão no seu servidor.
 </div>
