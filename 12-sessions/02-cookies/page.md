@@ -29,8 +29,8 @@ Se você usa o middleware de cookie de sessão, você NÃO precisa iniciar uma s
 ainda estará disponível e será persistido em um cookie HTTP através da camada do middleware ao invés do gerencimento de sessão
 nativo do PHP.
 
-Lembre-se, cookies HTTP são limitados para apenas 4 KB de dados. Se os dados da sua sessão execeder 
-esse tamanho, você deve depender então de sessões nativas do PHP ou um armazenamento de sessão alternativo.
+Lembre-se, cookies HTTP são limitados para apenas 4 KB de dados. Se os dados da sua sessão execeder esse tamanho, 
+você deve depender então de sessões nativas do PHP ou um armazenamento de sessão alternativo.
 
 <div class="alert">
     <strong>AVISO:</strong> 
