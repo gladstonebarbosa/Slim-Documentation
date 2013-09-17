@@ -1,18 +1,18 @@
 ---
-title: Custom HTTP Methods
+title: Métodos HTTP customizados
 status: live
 ---
 
-### One route, multiple HTTP methods
+### Uma rota, múltiplos métodos HTTP
 
-Sometimes you may need a route to respond to multiple HTTP methods; sometimes you may need a route to respond to a
-custom HTTP method. You can accomplish both with the Route object's `via()` method. This example demonstrates how
-to map a resource URI to a callback that responds to multiple HTTP methods.
+As vezes você precisa de uma rota para responder a múltiplos métodos HTTP; as vezes você precisa de uma para responder
+a métodos HTTP customizados. Você pode realizar ambos com o método `via()` do objeto Route. Este exemplo demonstra
+como mapear uma URI para um callback que responde a múltiplos métodos HTTP.
 
     <?php
     $app = new \Slim\Slim();
     $app->map('/foo/bar', function() {
-        echo "I respond to multiple HTTP methods!";
+        echo "Eu respondo a múltiplos métodos HTTP!";
     })->via('GET', 'POST');
     $app->run();
 
