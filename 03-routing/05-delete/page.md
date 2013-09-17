@@ -1,10 +1,9 @@
 ---
-title: DELETE Routes
+title: Rotas DELETE
 status: live
 ---
 
-Use the Slim application's `delete()` method to map a callback function to a resource URI that is requested with
-the HTTP DELETE method.
+Use o método `delete()` do Slim para mapear uma função callback para uma URI que é requisitada com o método HTTP DELETE.
 
     <?php
     $app = new \Slim\Slim();
@@ -12,16 +11,17 @@ the HTTP DELETE method.
         //Delete book identified by $id
     });
 
-In this example, an HTTP DELETE request for “/books/1” will invoke the associated callback function, passing "1" as
-the callback function's argument.
+Nesse exemplo, uma requisição HTTP DELETE para "/books/1" invocará a função callback associada, passando "1" como o
+parâmetro da função de callback.
 
-The first argument of the Slim application's `delete()` method is the resource URI. The last argument is anything that
-returns `true` for `is_callable()`. Typically, the last argument will be an [anonymous function][anon-func].
+O primeiro parâmetro do método `delete()` do Slim é o URI. O último parâmetro é qualquer coisa que 
+retorne `true` para a função `is_callable`. Tipicamente, o último parâmetro será uma [função anônima][anon-func].
 
-### Method Override
+### Sobescrita de Método
 
-Unfortunately, modern browsers do not provide native support for HTTP DELETE requests. To work around this limitation,
-ensure your HTML form’s method attribute is “post”, then add a method override parameter to your HTML form like this:
+Infelizmente, navegadores modernos não provêem suporte nativo para requisições HTTP DELETE. Para trablhar esta limitação,
+assegure que o método do seu formulário HTML seja "post", então adicione um parâmetro de sobrescrita de método 
+para o seu formulário HTML dessa forma:
 
     <form action="/books/1" method="post">
         ... other form fields here...
@@ -29,8 +29,9 @@ ensure your HTML form’s method attribute is “post”, then add a method over
         <input type="submit" value="Delete Book"/>
     </form>
 
-If you are using [Backbone.js][backbone] or a command-line HTTP client, you may also override the HTTP method by
-using the **X-HTTP-Method-Override** header.
+
+Se você está usando [Backbone.js][backbone] ou um cliente HTTP de linha de comando, você pode também sobrescrever o
+método HTTP usando o cabeçalho **X-HTTP-Method-Override**.
 
 [anon-func]: http://php.net/manual/en/functions.anonymous.php
 [backbone]: http://documentcloud.github.com/backbone/
