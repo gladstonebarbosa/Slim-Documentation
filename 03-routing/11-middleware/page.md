@@ -40,11 +40,11 @@ Você pode atribuir middlewares para esta rota passando cada middleware como um 
         //Faça alguma coisa
     });
 
-Quando a rota /foo é invocada, as funões `mw1` e `mw2` serão invocadas na sequência antes que a função de callback
+Quando a rota /foo é invocada, as funções `mw1` e `mw2` serão invocadas na sequência antes que a função de callback
 da rota seja executada.
 
-Suponha que você queira autenticar um determinado papel do usuário atual em uma rota especifica. Você poderia usar
-algumas closures mágicas desta forma:
+Suponha que você queira autenticar um determinado papel do usuário em uma rota especifica. Você poderia usar algumas 
+closures mágicas desta forma:
 
     <?php
     // Autentica o usuário para determinado papel
@@ -65,7 +65,7 @@ algumas closures mágicas desta forma:
 
 ### Quais parâmetros são passados em cada middleware de rota?
 
-Cada middleware é invocado com um parâmetro, o objeto atualmente combinado `\Slim\Route`.
+Cada middleware é invocado com um parâmetro, a rota atualmente combinada `\Slim\Route`.
 
     <?php
     $aBitOfInfo = function (\Slim\Route $route) {
