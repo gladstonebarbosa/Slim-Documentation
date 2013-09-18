@@ -16,9 +16,9 @@ como mapear uma URI para um callback que responde a múltiplos métodos HTTP.
     })->via('GET', 'POST');
     $app->run();
 
-The route defined in this example will respond to both GET and POST requests for the resource identified by “/foo/bar”.
-Specify each appropriate HTTP method as a separate string argument to the Route object's `via()` method. Like other
-Route methods (e.g. `name()` and `conditions()`), the `via()` method is chainable:
+A rota definida neste exemplo responderá para ambas as requisições GET e POST em recursos identificados por "/for/bar".
+Especifique cada método HTTP apropriado como parâmetros do tipo string para o método `via()` do objeto Route.
+Como outros métodos do objeto Route (ex: `name()` e `conditions()`), o método `via()` é encadeável:
 
     <?php
     $app = new \Slim\Slim();
@@ -27,11 +27,11 @@ Route methods (e.g. `name()` and `conditions()`), the `via()` method is chainabl
     })->via('GET', 'POST')->name('foo');
     $app->run();
 
-### One route, custom http methods
+### Uma rota, métodos HTTP customizados
 
-The Route object's `via()` method is not limited to just GET, POST, PUT, DELETE, and OPTIONS methods. You may also
-specify your own custom HTTP methods (e.g. if you were responding to WebDAV HTTP requests). You can define a route
-that responds to a custom “FOO” HTTP method like this:
+O método `via()` do objeto Route não é limitado apenas para os métodos GET, POST, PUT, DELETE e OPTIONS. Você pode
+também especificar seu próprio método HTTP customizado (ex: se você estivesse respondendo  para requisições WebDAV HTTP).
+Você pode definir uma rota que responda para um método customizado HTTP "FOO" dessa forma:
 
     <?php
     $app = new \Slim\Slim();
