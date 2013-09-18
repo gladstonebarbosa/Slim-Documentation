@@ -1,46 +1,46 @@
 ---
-title: Route Parameters
+title: Parâmetros de Rota
 status: live
 ---
 
-You can embed parameters into route resource URIs. In this example, I have two parameters in my
-route URI, “:one” and “:two”.
+Você pode embutir parâmetros em URIs de rotas. Nesse exemplo, eu tenho dois parâmetros em minha URI da rota, ":one"
+e ":two":
 
     <?php
     $app = new \Slim\Slim();
     $app->get('/books/:one/:two', function ($one, $two) {
-        echo "The first paramter is " . $one;
-        echo "The second parameter is " . $two;
+        echo "O primeiro parâmetro é " . $one;
+        echo "O segundo parâmetro é " . $two;
     });
 
-To create a URL parameter, prepend “:” to the parameter name in the route URI pattern. When the route matches the
-current HTTP request, the values for each route parameter are extracted from the HTTP request URI and are passed
-into the associated callback function in order of appearance.
+Para criar um parâmetro para a URL, coloque no inicio do nome do parâmetro ":". Quando a rota combina a atual requisição
+HTTP, os valores para cada parâmetro da rota são extraidos da URI da requisição HTTP e passados para a função callback
+associada na ordem que aparecem.
 
-### Wildcard route parameters
+### Parâmetros Wildcard
 
-You may also use wildcard route parameters. These will capture one or many URI segments that correspond to the route
-pattern’s wildcard parameter into an array. A wildcard parameter is identified by a “+” suffix; it otherwise acts
-the same as normal route parameters shown above. Here’s an example:
+Você pode também usar parâmetros do tipo wildcard. Esses parâmetros capturarão um ou muitos segmentos da URI 
+que correspondam para o parâmtro wildcard em um array. Um parâmetro wildcard é identificado por um "+" como sufixo do
+parâmetro; isso caso contrário, age da mesma forma como um parâmetro normal de rota. Aqui está um exemplo:
 
     <?php
     $app = new \Slim\Slim();
     $app->get('/hello/:name+', function ($name) {
-        // Do something
+        // Faça alguma coisa
     });
 
-When you invoke this example application with a resource URI “/hello/Josh/T/Lockhart”, the route callback’s `$name`
-argument will be equal to `array('Josh', 'T', Lockhart')`.
+Quando você invoca este exemplo com uma URI "/hello/Josh/T/Lockhard", o parâmetro `$name` no callback da rota
+será igual a `array('Josh', 'T', 'Lockhart')`.
 
-### Optional route parameters
+### Parâmetros opcionais de rota
 
 <div class="alert alert-warning">
-    <strong>Heads Up!</strong> Optional route segments are experimental. They should only be used
-    in the manor demonstrated below.
+    <strong>Se liga!</strong> Segmentos opcionais de rota são experimental. Eles devem apenas ser usados
+    da maneira demonstrada abaixo.
 </div>
 
-You may also have optional route parameters. These are ideal for using one route for a blog archive. To declare
-optional route parameters, specify your route pattern like this:
+Você pode também ter parâmetros opcionais em suas rotas. Esses parâmetros são ideais para uma rota de arquivo de blog.
+Para declarar parâmetros opcionais, especifique o padrão da rota dessa forma:
 
     <?php
     $app = new Slim();
@@ -48,15 +48,15 @@ optional route parameters, specify your route pattern like this:
         echo sprintf('%s-%s-%s', $year, $month, $day);
     });
 
-Each subsequent route segment is optional. This route will accept HTTP requests for:
+Cada segmento de rota subsequente é opcional. Esta rota aceitará requisições HTTP para:
 
 * /archive
 * /archive/2010
 * /archive/2010/12
 * /archive/2010/12/05
 
-If an optional route segment is omitted from the HTTP request, the default values in the callback signature are
-used instead.
+Se um segmento opcional de rota é omitido da requisição HTTP, o valores padrões na assinatura do callback são usados.
 
-Currently, you can only use optional route segments in situations like the example above where each route segment is
-subsequently optional. You may find this feature unstable when used in scenarios different from the example above.
+Atualmente, você pode apenas usar segmentos opcionais de rota em situações como a do exemplo acima onde cada segmento
+de rota é subsequentemente opcional. Você pode encontrar está funcionalidade instável quando usado em cenários diferentes
+do exemplo acima.
