@@ -1,36 +1,38 @@
 ---
-title: Route URL Rewriting
+title: Rescrevendo URL da Rota
 status: live
 ---
 
-I strongly encourage you to use a web server that supports URL rewriting; this will let you enjoy clean, human-friendly
-URLs with your Slim application. To enable URL rewriting, you should use the appropriate tools provided by your
-web server to forward all HTTP requests to the PHP file in which you instantiate and run your Slim application.
-The following are sample, bare minimum, configurations for Apache with mod_php and nginx. These are not meant to
-be production ready configurations but should be enough to get you up and running. To read more on server deployment
-in general you can continue reading <http://www.phptherightway.com>.
+Eu encorajo fortemente você a usar um servidor web que suporte reescrita de URL; isso fará você desfrutar de URLs
+limpas e amigáveis com sua aplicação Slim. Para habilitar reescrita de URL, você deve usar as ferramentas apropriadas
+providas pelo seu servidor web para encaminhar todas as requisições HTTP para o arquivo PHP em que você instancia e executa
+a sua aplicação Slim.
+A seguinte demonstração, minima necessária, configurações para o Apache com mod_php e nginx. Esses não são feitos
+para ser configurações prontas para produção mas deve ser o suficiente para deixar as coisas funcionando.
+Para ler mais sobre ser deployment em geral você pode continuar lendo em <http://www.phptherightway.com>.
 
-### Apache and mod_rewrite
+### Apache e mod_rewrite
 
-Here is an example directory structure:
+Aqui está um exemplo de estrutura de diretório:
 
     /path/www.mysite.com/
-        public_html/ <-- Document root!
+        public_html/ <-- Documento raiz!
             .htaccess
-            index.php <-- I instantiate Slim here!
+            index.php <-- Eu instancio o Slim aqui!
         lib/
-            Slim/ <-- I store Slim lib files here!
+            Slim/ <-- Eu armazeno as bibliotecas do Slim aqui!
 
-The **.htaccess** file in the directory structure above contains:
+O arquivo **.htaccess** na estrutura de diretório acima contém:
 
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
 
-You also need a directory directive to enable **.htaccess** files and allow the **RewriteEngine** directive to be used.
-This is sometimes done globally in the **httpd.conf** file, but its generally a good idea to limit the directive to
-just your virual host by enclosing it in your **VirualHost** configuration block. This is generally setup in your
-configuration in the form of:
+Você pode também precisar de uma diretriz de diretório para habilitar arquivos **.htaccess** e permitir que a diretriz
+**RewriteEngine** seja usada.
+Isto é as vezes feito globalmente no arquivo **httpd.conf**, mas é geralmente uma boa idéia limitar a diretriz para
+apenas seu host virtual, cercando isso em seu bloco de configuração **VirualHost**. Isto é geralmente configurado em
+sua configuração na forma de:
 
     <VirtualHost *:80>
         ServerAdmin me@mysite.com
@@ -48,9 +50,9 @@ configuration in the form of:
         </Directory>
     </VirtualHost>
 
-As a result, Apache will send all requests for non-existent files to my **index.php** script in which I instantiate
-and run my Slim application. With URL rewriting enabled and assuming the following Slim application is defined in
-**index.php**, you can access the application route below at “/foo” rather than “/index.php/foo”.
+Como resultado, o Apache enviará todas as requisições de arquivos não existentes para meu script **index.php** no qual
+eu instancio e executo minha aplicação Slim. Com a reescrita de URL habilitada e presumindo que a seguinte aplicação
+Slim está definida no **index.php**, você pode acessar a rota da aplicação abaixo em "/foo" ao invés de "index.php/foo".
 
     <?php
     $app = new \Slim\Slim();
@@ -61,16 +63,16 @@ and run my Slim application. With URL rewriting enabled and assuming the followi
 
 ### nginx
 
-We will use the same example directory structure as before, but with nginx our configuration will go into **nginx.conf**.
+Usaremos o mesmo exemplo de estrutura de diretório como antes, mas com nginx nossa configuração irá em **nginx.conf**.
 
     /path/www.mysite.com/
-        public_html/ <-- Document root!
-            index.php <-- I instantiate Slim here!
+        public_html/ <-- Documento raiz!
+            index.php <-- Eu instancio o Slim aqui!
         lib/
-            Slim/ <-- I store Slim lib files here!
+            Slim/ <-- Armazeno os arquivos da biblioteca do Slim aqui!
 
-Here is a snippet of a **nginx.conf** in which we use the **try_files** directive to serve the file if it exists,
-good for static files (images, css, js etc), and otherwise forward it on to the **index.php** file.
+Aqui está um snippet de um **nginx.conf** em que usamos a diretriz **try_files** para servir o arquivo se ele existir,
+bom para arquivos estaticos (imagens, css, js etc), e caso contrário, encaminha a requisição para o arquivo **index.php**.
 
     server {
         listen       80;
@@ -89,18 +91,19 @@ good for static files (images, css, js etc), and otherwise forward it on to the 
         }
     }
 
-Most installations will have a default **fastcgi_params** file setup that you can just include as shown above.
-Some configurations don’t include the **SCRIPT_FILENAME** parameter. You must ensure you include this parameter
-otherwise you might end up with a No input file specified error from the fastcgi process. This can be done directly
-in the location block or simply added to the **fastcgi_params** file. Either way it looks like this:
+A maioria das instalações teram uma configuração de arquivo padrão **fastcgi_params** que você pode incluir como mostrado acima.
+Algumas configurações não incluem o parâmetro **SCRIPT_FILENAME**. Você deve se certificar que você incluiu este parâmetro
+caso contrário você poderá terminar com um erro de arquivo não especificado do rápido processo cgi.
+Isso pode ser feito diretamente no bloco de localização ou simplesmente adicionado para o arquivo **fastcgi_params**.
+De qualquer forma, se parece com isso:
 
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
 
-### Without URL Rewriting
+### Sem reescrita de URL
 
-Slim will work without URL rewriting. In this scenario, you must include the name of the PHP file in which you
-instantiate and run the Slim application in the resource URI. For example, assume the following Slim application
-is defined in **index.php** at the top level of your virtual host’s document root:
+Slim funcionará sem reescrita de URL. neste cenário, você deve incluir o nome do arquivo PHP em que você
+instancia e executa a aplicação Slim na sua URI. Por exemplo, pressumir que a seguinte aplicação Slim é definida
+em **index.php** na raiz do seu projeto:
 
     <?php
     $app = new \Slim\Slim();
@@ -109,5 +112,5 @@ is defined in **index.php** at the top level of your virtual host’s document r
     });
     $app->run();
 
-You can access the defined route at “/index.php/foo”. If the same application is instead defined in **index.php**
-inside of the physical subdirectory blog/, you can access the defined route at /blog/index.php/foo.
+Você pode acessar a rota definida em "/index.php/foo". Mas se ao invés, a mesma aplicação é definida em **index.php**
+dentro do subdiretório físico blog/, você pode acessar a rota definida em /blog/index.php/foo.
