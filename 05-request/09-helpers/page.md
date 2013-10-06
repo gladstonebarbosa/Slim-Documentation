@@ -5,7 +5,7 @@ status: live
 
 O objeto de requisição do Slim prover vários métodos "helper" para obter informações HTTP comuns:
 
-### Content Type
+### Tipo de Conteúdo
 
 Obtém o tipo de conteúdo da requisição (ex: "application/json;charset=utf-8"):
 
