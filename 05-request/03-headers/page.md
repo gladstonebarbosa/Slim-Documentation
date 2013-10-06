@@ -1,26 +1,26 @@
 ---
-title: Request Headers
+title: Cabeçalhos de requisição
 status: live
 ---
 
-A Slim application will automatically parse all HTTP request headers. You can access the request headers using the
-request object's `headers()` method.
+Um aplicação Slim automaticamente analisará todos os cabeçalhos de uma requisição HTTP. Você pode acessá-los usando o 
+método `headers()` do objeto de requisição.
 
     <?php
     $app = new \Slim\Slim();
 
-    // Get request object
+    // Obtem o objeto de requisição
     $req = $app->request();
 
-    // Get request headers as associative array
+    // Retorna os cabeçalhos da requisição como um array associativo
     $headers = $req->headers();
 
     // Get the ACCEPT_CHARSET header
     $charset = $req->headers('ACCEPT_CHARSET');
 
-In the second example, the `headers()` method will either return a string value or `null` if the header with the
-given name does not exist.
+No segundo exemplo, o método `headers()` irá tanto retornar um valor de string ou `null` se o cabeçalho com o 
+nome passado não existir.
 
-The HTTP specification states that HTTP header names may be uppercase, lowercase, or mixed-case. Slim is smart enough
-to parse and return header values whether you request a header value using upper, lower, or mixed case header name,
-with either underscores or dashes. So use the naming convention with which you are most comfortable.
+A especificação HTTP determina que os nomes de cabeçalhos HTTP podem ser maiusculos, minusculos ou ambos. Slim é inteligente o suficiente
+para analisar e retornar valores do cabeçalho se você pedi-lo usando um valor maiusculo, minusculo, misturado, com underline ou traços.
+Sendo assim use a convenção de nome com a qual você se sinta mais confortavel.
