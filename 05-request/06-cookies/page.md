@@ -1,39 +1,37 @@
 ---
-title: Request Cookies
+title: Requisições de Cookie
 status: live
 ---
 
-### Get Cookies
+### Obter Cookies
 
-A Slim application will automatically parse cookies sent with the current HTTP request. You can fetch cookie values
-with the Slim application’s `getCookie()` method like this:
+Uma aplicação Slim automaticamente analisará cookies enviado com a requisição HTTP atual. Você pode obter valores de cookie
+com o método `getCookie()` dessa forma:
 
     <?php
     $foo = $app->getCookie('foo');
 
-Only Cookies sent with the current HTTP request are accessible with this method. If you set a cookie during the
-current request, it will not be accessible with this method until the subsequent request. If you want to fetch an
-array of all cookies sent with the current request, you must use the request object’s `cookies()` method like this:
+Apenas Cookies enviados com a atual requisição HTTP são acessiveis com este método.
+Se você atribuir um cookie durante a requisição atual, o mesmo não será acessível com este método até a requisição subsequente.
+Se você quer obter um array de todos os cookies enviados com a atual requisição, você deve usar o método `cookies()` do objeto de requisição:
 
     <?php
     $cookies = $app->request()->cookies();
 
-When multiple cookies with the same name are available (e.g. because they have different paths) only the most
-specific one (longest matching path) is returned. See RFC 2109.
+Quando multiplos cookies com o mesmo nome estão disponiveis (ex: porque eles tem caminhos diferentes) apenas o mais especifico
+é retornado. Veja RFC 2109.
 
-### Get Encrypted Cookies
+### Obter Cookies Criptografados
 
-If you previously set an encrypted cookie, you can fetch its decrypted value with the Slim application’s
-`getEncryptedCookie()` method like this:
+Se você anteriormente atribuiu um cookie criptografado, você pode obter seu valor descriptografado com o método `getEncryptedCookie()`:
 
     <?php
     $value = $app->getEncryptedCookie('foo');
 
-If the cookie was modified while with the HTTP client, Slim will automatically destroy the cookie’s value and
-invalidate the cookie in the next HTTP response. You can disable this behavior by passing `false` as the
-second argument:
+Se o cookie foi modificado enquanto com o cliente HTTP, Slim automaticamente destruirá o valor do cookie e invalidará o 
+cookie na próxima resposta HTTP. Você pode desabilitar este comportamento passando `false` como o segundo parâmetro:
 
     <?php
     $value = $app->getEncryptedCookie('foo', false);
 
-Whether you destroy invalid cookies or not, `null` is returned if the cookie does not exist or is invalid.
+Se você destruir cookies inválidos ou não, `null` é retornado se o cookie não existe ou é inválido.
