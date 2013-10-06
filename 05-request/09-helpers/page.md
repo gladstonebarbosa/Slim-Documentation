@@ -1,45 +1,45 @@
 ---
-title: Request Helpers
+title: Helpers de Requisição
 status: live
 ---
 
-The Slim application's request object provides several helper methods to fetch common HTTP request information:
+O objeto de requisição do Slim prover vários métodos "helper" para obter informações HTTP comuns:
 
 ### Content Type
 
-Fetch the request's content type (e.g. "application/json;charset=utf-8"):
+Obtém o tipo de conteúdo da requisição (ex: "application/json;charset=utf-8"):
 
     <?php
     $req = $app->request();
     $req->getContentType();
 
-### Media Type
+### Tipo de Mídia
 
-Fetch the request's media type (e.g. "application/json"):
+Obtém o tipo de mídia da requisição (ex: "application/json"):
 
     <?php
     $req = $app->request();
     $req->getMediaType();
 
-### Media Type Params
+### Parâmetros do Tipo da Mídia
 
-Fetch the request's media type parameters (e.g. [charset => "utf-8"]):
+Obtém os parâmetrs do tipo de mídia (ex: [charset => "utf-8"]):
 
     <?php
     $req = $app->request();
     $req->getMediaTypeParams();
 
-### Content Charset
+### Charset do conteúdo
 
-Fetch the request's content character set (e.g. "utf-8"):
+Obtém o conjunto de caracteres do conteúdo da requisição (ex: "utf-8"):
 
     <?php
     $req = $app->request();
     $req->getContentCharset();
 
-### Content Length
+### Tamanho do Conteúdo
 
-Fetch the request's content length:
+Obtém o tamanho do conteúdo da requisição:
 
     <?php
     $req = $app->request();
@@ -47,39 +47,39 @@ Fetch the request's content length:
 
 ### Host
 
-Fetch the request's host (e.g. "slimframework.com"):
+Obtém o host da requisição (ex: "slimframework.com"):
 
     <?php
     $req = $app->request();
     $req->getHost();
 
-### Host with Port
+### Host com Porta
 
-Fetch the request's host with port (e.g. "slimframework.com:80"):
+Obtém o host com a porta da requisição (ex: "slimframework.com:80"):
 
     <?php
     $req = $app->request();
     $req->getHostWithPort();
 
-### Port
+### Porta
 
-Fetch the request's port (e.g. 80):
+Obtém a porta da requisição (ex: 80):
 
     <?php
     $req = $app->request();
     $req->getPort();
 
-### Scheme
+### Esquema
 
-Fetch the request's scheme (e.g. "http" or "https"):
+Obtém o esquema da requisição (ex: "http" or "https"):
 
     <?php
     $req = $app->request();
     $req->getScheme();
 
-### Path
+### Caminho
 
-Fetch the request's path (root URI + resource URI):
+Obtém o caminho da requisição (URI raiz + recurso da URI):
 
     <?php
     $req = $app->request();
@@ -87,15 +87,15 @@ Fetch the request's path (root URI + resource URI):
 
 ### URL
 
-Fetch the request's URL (scheme + host [ + port if non-standard ]):
+Obtém a URL da requisição (esquema + host [ + port se não padrão ]):
 
     <?php
     $req = $app->request();
     $req->getUrl();
 
-### IP Address
+### Endereço IP
 
-Fetch the request's IP address:
+Obtém o endereço IP da requisição:
 
     <?php
     $req = $app->request();
@@ -103,15 +103,15 @@ Fetch the request's IP address:
 
 ### Referer
 
-Fetch the request's referrer:
+Referer o referrer da requisição:
 
     <?php
     $req = $app->request();
     $req->getReferrer();
 
-### User Agent
+### Agente de usuário
 
-Fetch the request's user agent string:
+Obtém o agente de usuário da requisição:
 
     <?php
     $req = $app->request();
